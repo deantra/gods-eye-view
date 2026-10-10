@@ -60,7 +60,8 @@ let openSkyStatus = null;
         }
       });
     }
-  } catch {
+  } catch (error) {
+    openSkyStatus = error?.name || "OpenSky fetch failed";
     // Try the alternate provider below
   }
   // Alternate provider: aircraft near the map's current location
