@@ -8,7 +8,9 @@ export default {
       const group = url.pathname.split("/").pop();
 
       if (!/^[a-z0-9-]+$/i.test(group)) {
-        return new Response("Invalid satellite group", { status: 400 });
+        return new Response("Invalid satellite group", {
+          status: 400
+        });
       }
 
       const upstream = new URL(
@@ -36,14 +38,13 @@ export default {
     // Live flight data
     if (url.pathname === "/api/flights") {
       try {
-        const upstream = new URL(
-          "https://opensky-network.org/api/states/all"
+        const response = await fetch(
+          "https://opensky-network.org/api/states/all?extended=1",
+          {
+            headers: { "Accept": "application/json" },
+            signal: AbortSignal.timeout(8000)
+          }
         );
-        upstream.searchParams.set("extended", "1");
-
-        const response = await fetch(upstream, {
-          headers: { "Accept": "application/json" }
-        });
 
         return new Response(response.body, {
           status: response.status,
@@ -66,6 +67,29 @@ export default {
         const response = await fetch(
           "https://api.adsb.lol/v2/mil",
           {
-  headers: {
-    "Accept": "application/json",
-    "User-Agent": "Mozilla/5.0 (compatible; GodsEyeView/1.0; +mailto:deantrhar@gmail.com)"
+            headers: {
+              "Accept": "application/json",
+              "User-Agent": "GodsEyeView/1.0 (flight data viewer)"
+            },
+            signal: AbortSignal.timeout(8000)
+          }
+        );
+
+        return new Response(response.body, {
+          status: response.status,
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "Cache-Control": "public, max-age=12"
+          }
+        });
+      } catch {
+        return Response.json(
+          { error: "Military flight data temporarily unavailable" },
+          { status: 502 }
+        );
+      }
+    }
+
+    return env.ASSETS.fetch(request);
+  }
+};
