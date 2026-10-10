@@ -37,7 +37,8 @@ import { normalizeAdsbLolPointResponse } from "./src/data/adsbLolFallback.js";
     }
 
    // Live flight data
-if (url.pathname === "/api/flights") {
+let openSkyStatus = null;
+    if (url.pathname === "/api/flights") {
   const lat = Number(url.searchParams.get("lat"));
   const lon = Number(url.searchParams.get("lon"));
   // Try OpenSky first
@@ -49,6 +50,7 @@ if (url.pathname === "/api/flights") {
         signal: AbortSignal.timeout(8000)
       }
     );
+    openSkyStatus = response.status;
     if (response.ok) {
       return new Response(response.body, {
         status: response.status,
