@@ -65,7 +65,12 @@ export default {
       try {
         const response = await fetch(
           "https://api.adsb.lol/v2/mil",
-          { headers: { "Accept": "application/json" } }
+          {
+  headers: {
+    "Accept": "application/json",
+    "User-Agent": "GodsEyeView/1.0 (contact: deantrhar@gmail.com)"
+  }
+}
         );
 
         return new Response(response.body, {
