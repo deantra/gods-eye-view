@@ -1,4 +1,7 @@
 {
+"observability": {
+  "enabled": true
+}
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "gods-eye-view",
   "main": "./worker.js",
