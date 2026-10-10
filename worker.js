@@ -65,7 +65,7 @@ export default {
     if (url.pathname === "/api/military") {
       try {
         const response = await fetch(
-          "https://api.airplanes.live/v2/mil",
+          "https://api.adsb.lol/v2/mil",
           {
             headers: {
               "Accept": "application/json",
