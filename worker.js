@@ -81,11 +81,14 @@ if (url.pathname === "/api/flights") {
       signal: AbortSignal.timeout(10000)
     });
     if (!response.ok) {
-      return Response.json(
-        { error: "Flight providers temporarily unavailable" },
-        { status: 502 }
-      );
-    }
+  return Response.json(
+    {
+      error: "Flight providers temporarily unavailable",
+      providerStatus: response.status
+    },
+    { status: 502 }
+  );
+}
     const payload = await response.json();
     const normalized = normalizeAdsbLolPointResponse(payload);
     return Response.json(normalized, {
