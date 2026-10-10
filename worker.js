@@ -81,10 +81,13 @@ if (url.pathname === "/api/flights") {
       signal: AbortSignal.timeout(10000)
     });
     if (!response.ok) {
+  const retryAfter = response.headers.get("Retry-After");
+
   return Response.json(
     {
       error: "Flight providers temporarily unavailable",
-      providerStatus: response.status
+      providerStatus: response.status,
+      retryAfter: retryAfter
     },
     { status: 502 }
   );
