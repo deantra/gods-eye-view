@@ -68,26 +68,4 @@ export default {
           {
   headers: {
     "Accept": "application/json",
-    "User-Agent": "GodsEyeView/1.0 (contact: deantrhar@gmail.com)"
-  }
-}
-        );
-
-        return new Response(response.body, {
-          status: response.status,
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            "Cache-Control": "public, max-age=12"
-          }
-        });
-      } catch {
-        return Response.json(
-          { error: "Military flight data temporarily unavailable" },
-          { status: 502 }
-        );
-      }
-    }
-
-    return env.ASSETS.fetch(request);
-  }
-};
+    "User-Agent": "Mozilla/5.0 (compatible; GodsEyeView/1.0; +mailto:deantrhar@gmail.com)"
