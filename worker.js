@@ -47,7 +47,7 @@ let openSkyStatus = null;
       "https://opensky-network.org/api/states/all?extended=1",
       {
         headers: { "Accept": "application/json" },
-        signal: AbortSignal.timeout(8000)
+        signal: AbortSignal.timeout(20000)
       }
     );
     openSkyStatus = response.status;
