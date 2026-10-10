@@ -1,11 +1,11 @@
 {
-"observability": {
-  "enabled": true
-}
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "gods-eye-view",
   "main": "./worker.js",
   "compatibility_date": "2026-10-06",
+  "observability": {
+    "enabled": true
+  },
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
