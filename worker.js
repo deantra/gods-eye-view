@@ -1,4 +1,4 @@
-import { normalizeAdsbLolPointResponse } from “./src/data/adsbLolFallback.js”;
+import { normalizeAdsbLolPointResponse } from "./src/data/adsbLolFallback.js";
 
   export default {
   async fetch(request, env) {
