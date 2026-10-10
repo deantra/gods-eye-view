@@ -90,6 +90,7 @@ let openSkyStatus = null;
       error: "Flight providers temporarily unavailable",
       providerStatus: response.status,
       retryAfter: retryAfter
+   openSkyStatus: openSkyStatus
     },
     { status: 502 }
   );
