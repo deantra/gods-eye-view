@@ -37,6 +37,41 @@ import { normalizeAdsbLolPointResponse } from "./src/data/adsbLolFallback.js";
     }
 
    // Live flight data
+    
+    // Temporary PlaneTrack connection test
+    if (url.pathname === "/api/planetrack-test") {
+      if (!env.PLANETRACK_API_KEY) {
+        return Response.json({ ok: false, error: "API key secret is missing" }, { status: 500 });
+      }
+
+      try {
+        const response = await fetch(
+          "https://planetrack.ai/v1/live?window_secs=60&limit=100",
+          {
+            headers: {
+              "X-API-Key": env.PLANETRACK_API_KEY,
+              "Accept": "application/json"
+            },
+            signal: AbortSignal.timeout(10000)
+          }
+        );
+
+        const payload = await response.json().catch(() => ({}));
+
+        return Response.json({
+          ok: response.ok,
+          status: response.status,
+          count: Array.isArray(payload.aircraft) ? payload.aircraft.length : null,
+          error: response.ok ? null : (payload.error || payload.message || "Provider request failed")
+        });
+      } catch (error) {
+        return Response.json({
+          ok: false,
+          error: error?.name || "Request failed"
+        }, { status: 502 });
+      }
+    }
+
     // Live flight data — regular flights only
     if (url.pathname === "/api/flights") {
       const lat = Number(url.searchParams.get("lat"));
