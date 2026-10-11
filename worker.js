@@ -48,10 +48,11 @@ import { normalizeAdsbLolPointResponse } from "./src/data/adsbLolFallback.js";
         const response = await fetch(
           "https://opensky-network.org/api/states/all?extended=1",
           {
-   headers: {
-  Accept: "application/json",
-  "User-Agent": "GodsEyeView/1.0"
-},
+   {
+  headers: { Accept: "application/json" },
+  signal: AbortSignal.timeout(8000)
+}
+          },
 cf: {
   cacheTtl: 15,
   cacheEverything: true
