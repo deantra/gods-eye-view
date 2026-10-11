@@ -105,7 +105,7 @@ signal: AbortSignal.timeout(8000)
     {
       error: "Flight providers temporarily unavailable",
       providerName: "adsb.fi",
-providerStatus: response.status,,
+providerStatus: response.status,
       providerMessage: responseBody.slice(0, 300),
       retryAfter: response.headers.get("Retry-After"),
       openSkyStatus
