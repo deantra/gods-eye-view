@@ -84,7 +84,7 @@ import { normalizeAdsbLolPointResponse } from "./src/data/adsbLolFallback.js";
       // Alternate provider: regional aircraft data
       try {
         const upstream = new URL(
-          `https://api.adsb.lol/v2/lat/${lat.toFixed(2)}/lon/${lon.toFixed(2)}/dist/250`
+          `https://opendata.adsb.fi./v2/lat/${lat.toFixed(2)}/lon/${lon.toFixed(2)}/dist/250`
         );
 
         const response = await fetch(upstream, {
