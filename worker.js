@@ -45,21 +45,13 @@ import { normalizeAdsbLolPointResponse } from "./src/data/adsbLolFallback.js";
 
       // Try OpenSky first
       try {
-        const response = await fetch(
-          "https://opensky-network.org/api/states/all?extended=1",
-          {
-   {
-  headers: { Accept: "application/json" },
-  signal: AbortSignal.timeout(8000)
-}
-          },
-cf: {
-  cacheTtl: 15,
-  cacheEverything: true
-},
-signal: AbortSignal.timeout(8000)
-          }
-        );
+  const response = await fetch(
+  "https://opensky-network.org/api/states/all?extended=1",
+  {
+    headers: { Accept: "application/json" },
+    signal: AbortSignal.timeout(8000)
+  }
+);
 
         openSkyStatus = response.status;
 
