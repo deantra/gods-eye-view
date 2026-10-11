@@ -88,11 +88,15 @@ import { normalizeAdsbLolPointResponse } from "./src/data/adsbLolFallback.js";
         );
 
         const response = await fetch(upstream, {
-          headers: {
-            Accept: "application/json",
-            "User-Agent": "GodsEyeView/1.0"
-          },
-          signal: AbortSignal.timeout(8000)
+       headers: {
+  Accept: "application/json",
+  "User-Agent": "GodsEyeView/1.0"
+},
+cf: {
+  cacheTtl: 15,
+  cacheEverything: true
+},
+signal: AbortSignal.timeout(8000)
         });
 
         if (!response.ok) {
