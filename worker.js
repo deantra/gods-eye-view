@@ -100,16 +100,18 @@ signal: AbortSignal.timeout(8000)
         });
 
         if (!response.ok) {
-          return Response.json(
-            {
-              error: "Flight providers temporarily unavailable",
-              providerStatus: response.status,
-              retryAfter: response.headers.get("Retry-After"),
-              openSkyStatus
-            },
-            { status: 502 }
-          );
-        }
+  const responseBody = await response.text();
+  return Response.json(
+    {
+      error: "Flight providers temporarily unavailable",
+      providerStatus: response.status,
+      providerMessage: responseBody.slice(0, 300),
+      retryAfter: response.headers.get("Retry-After"),
+      openSkyStatus
+    },
+    { status: 502 }
+  );
+}
 
         const payload = await response.json();
         const normalized = normalizeAdsbLolPointResponse(payload);
