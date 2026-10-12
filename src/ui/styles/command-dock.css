@@ -307,3 +307,106 @@ body.recording-mode #cesium-credits {
     bottom: calc(50vh + 8px);
   }
 }
+
+/* ── iPhone-friendly command dock ─────────────── */
+@media (max-width: 600px) {
+  #command-dock {
+    left: 8px;
+    right: 8px;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    width: auto;
+    max-width: none;
+    box-sizing: border-box;
+    grid-template-areas:
+      "locations locations"
+      "voice voice"
+      "presets presets";
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+    padding: 8px;
+    transform: none;
+    max-height: 48vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  #command-dock > #location-bar {
+    border-right: 0;
+    border-bottom: 1px solid rgba(123, 189, 211, 0.2);
+  }
+
+  #command-dock > #control-panel {
+    border-left: 0;
+    border-top: 1px solid rgba(123, 189, 211, 0.2);
+  }
+
+  #command-dock > #gev-voice-control {
+    margin: 0;
+    padding: 22px 10px 10px;
+    min-height: 64px;
+  }
+
+  #command-dock .panel-inner,
+  #command-dock .location-inner,
+  #command-dock #control-panel.collapsed .panel-inner,
+  #command-dock #location-bar.collapsed .location-inner {
+    padding: 8px;
+  }
+
+  #command-dock .button-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #command-dock .style-btn {
+    min-height: 44px;
+    min-width: 60px;
+    padding: 9px;
+  }
+
+  #command-dock .location-city-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #command-dock .location-search-wrap {
+    flex: 1 1 100%;
+    min-width: 0;
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  #command-dock .location-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  #command-dock .location-pill {
+    min-height: 40px;
+    padding: 9px 10px;
+  }
+
+  #command-dock #location-search,
+  #command-dock #location-search.expanded {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  #command-dock #gev-voice-button {
+    min-height: 44px;
+  }
+
+  body:not(.ui-clean-view):not(.recording-mode) #cesium-credits {
+    bottom: calc(48vh + 16px);
+  }
+
+  #intel-hud[data-variant='minimal'] .hud-bottom-left {
+    bottom: calc(48vh + 20px);
+  }
+
+  #intel-hud[data-variant='minimal'] .hud-bottom-bar {
+    bottom: calc(48vh + 60px);
+  }
+}
