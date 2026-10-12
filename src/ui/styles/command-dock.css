@@ -411,3 +411,16 @@ margin-left: 0;
     bottom: calc(48vh + 60px);
   }
 }
+/* Final iPhone dock positioning fix */
+@media screen and (max-width: 600px) {
+#command-dock {
+position: fixed !important;
+left: 8px !important;
+right: 8px !important;
+width: auto !important;
+max-width: none !important;
+margin: 0 !important;
+transform: none !important;
+box-sizing: border-box !important;
+}
+}
