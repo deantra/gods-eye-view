@@ -176,7 +176,7 @@
     bottom: calc(58vh + 8px);
     left: 16px;
     width: auto;
-    max-height: none;
+    max-height: 35vh;
     overflow-y: auto;
   }
 
