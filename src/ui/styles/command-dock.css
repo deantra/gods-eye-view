@@ -395,9 +395,10 @@ margin-left: 0;
     font-size: 16px;
   }
 
-  #command-dock #gev-voice-button {
-    min-height: 44px;
-  }
+ #command-dock #gev-voice-button {
+  min-height: 48px;
+  padding: 10px 14px;
+}
 
   body:not(.ui-clean-view):not(.recording-mode) #cesium-credits {
     bottom: calc(48vh + 16px);
