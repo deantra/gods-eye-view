@@ -384,10 +384,10 @@ margin-left: 0;
     gap: 6px;
   }
 
-  #command-dock .location-pill {
-    min-height: 40px;
-    padding: 9px 10px;
-  }
+#command-dock .location-pill {
+  min-height: 44px;
+  padding: 10px 12px;
+}
 
   #command-dock #location-search,
   #command-dock #location-search.expanded {
