@@ -181,7 +181,7 @@
   }
 
   #right-context-rail {
-    top: calc(50vh + 8px);
+    top: 58vh;
     right: 16px;
     /* The rail goes edge-to-edge at this width, so its floor is what decides
        whether the required Google/Cesium credit line survives. The credit's
